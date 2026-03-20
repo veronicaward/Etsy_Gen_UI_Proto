@@ -46,6 +46,8 @@ export interface MessageThreadFullProps extends React.HTMLAttributes<HTMLDivElem
    * @example variant="compact"
    */
   variant?: VariantProps<typeof messageVariants>["variant"];
+  /** Override the default quick-start suggestions shown below the input. */
+  suggestions?: Suggestion[];
 }
 
 /**
@@ -54,7 +56,7 @@ export interface MessageThreadFullProps extends React.HTMLAttributes<HTMLDivElem
 export const MessageThreadFull = React.forwardRef<
   HTMLDivElement,
   MessageThreadFullProps
->(({ className, variant, ...props }, ref) => {
+>(({ className, variant, suggestions, ...props }, ref) => {
   const { containerRef, historyPosition } = useThreadContainerContext();
   const mergedRef = useMergeRefs<HTMLDivElement | null>(ref, containerRef);
 
@@ -67,7 +69,7 @@ export const MessageThreadFull = React.forwardRef<
     </ThreadHistory>
   );
 
-  const defaultSuggestions: Suggestion[] = [
+  const defaultSuggestions: Suggestion[] = suggestions ?? [
     {
       id: "suggestion-1",
       title: "Get started",

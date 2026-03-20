@@ -1,5 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Etsy Generative UI Project",
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

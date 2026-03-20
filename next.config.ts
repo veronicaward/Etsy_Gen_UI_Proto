@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+    ],
+  },
   // Run ESLint separately via `npm run lint` (avoids deprecated next lint)
   eslint: {
     ignoreDuringBuilds: true,
